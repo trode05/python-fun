@@ -2,7 +2,7 @@ import json
 from flask import Flask, jsonify, make_response, request
 from github import Github
 
-TOKEN = "c4457b236636f3ab51e335a9a2809754a4042e84"
+TOKEN = "e279918c621ed22ea8ec4243c1c7821074118b5a"
 
 app = Flask(__name__)
 log = app.logger
@@ -38,7 +38,7 @@ def git_details(number):
             reviewers = ""
             for rev in pull.raw_data['requested_reviewers']:
                 reviewers = reviewers + " " +rev['login']
-            message=message+f"\n     Waiting for reviewers: {reviewers}"
+            message=message+f"\n     Waiting for reviewers:{reviewers}"
         return message
     except:
         return f"There is no pull request with the number {number}."
