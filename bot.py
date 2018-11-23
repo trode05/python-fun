@@ -14,9 +14,6 @@ def webhook():
     req = request.get_json(force=True)
     intent = req.get('queryResult').get('intent').get('displayName')
 
-    log.error('Unexpected action requested: %s', json.dumps(req))
-
-
     # Check if the request is for the translate action
     if intent == 'pr.state':
         pr =  req['queryResult']['parameters'].get('number-integer')
