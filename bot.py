@@ -15,7 +15,7 @@ def webhook():
     intent = req.get('queryResult').get('intent').get('displayName')
 
     # Check if the request is for the translate action
-    if intent == 'pr.state':
+    if 'pr.state' in intent:
         pr =  int(req['queryResult']['parameters'].get('number-integer'))
         output = git_details(pr)
         
@@ -50,3 +50,5 @@ def dump(obj):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+# .\ngrok.exe http 5000
