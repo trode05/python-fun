@@ -27,7 +27,7 @@ def promote_elements(elements, comment="pax automation", ccid="pax"):
     if(elements):
         for el in elements:
             if(el['typeName']!="SANDBOX"):
-                command = f">> bright endevor move ele {el['elmName']} --type {el['typeName']} --sn {el['stgNum']} --sys {el['sysName']} --cci {ccid} --com \"{comment}\" --sm"
+                command = f">> bright endevor move ele {el['elmName']} --type {el['typeName']} --env {el['envName']} --sn {el['stgNum']} --sys {el['sysName']} --cci {ccid} --com \"{comment}\" --sm"
                 if(el['sbsName']):
                     command = f"{command} --sub {el['sbsName']}"
             print(command)  
@@ -36,4 +36,4 @@ def promote_elements(elements, comment="pax automation", ccid="pax"):
 promote_elements(get_elements("AML02001", "DEV", 1))
 promote_elements(get_elements("AML02001", "DEV", 2))
 promote_elements(get_elements("", "QA", 2))
-promote_elements(get_elements("", "PRD", 2))
+get_elements("", "PRD", 2, debug=True)
